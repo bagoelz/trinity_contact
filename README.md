@@ -3,7 +3,7 @@
 Application for assesment on trinity
 
 ## Getting Started
-### flutter pub get to start download defendencies
+### flutter pub get to start download dependencies
 
 
 '''

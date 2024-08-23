@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:trinity_contact/component/snackbar.dart';
 import 'package:trinity_contact/helper/SharedPref.dart';
+import 'package:trinity_contact/shared/global.dart';
 
 class AuthenticationController extends GetxController {
   static AuthenticationController get to => Get.find();

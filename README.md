@@ -6,7 +6,7 @@ Application for assesment on trinity
 ### flutter pub get to start download dependencies
 
 
-'''
+
 - Login Page - done
 - add prefix (you) - done
 - search feature working - done

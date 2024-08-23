@@ -11,7 +11,7 @@ Application for assesment on trinity
 - add prefix (you) - done
 - search feature working - done
 - Fab - done
-- Home - Nagigation bar - done
+- Home Navigation bar - done
 - Group based on inital firstname - done
 - Clicking on contact redirect to user profile contact detail - done
 - Clicking on update button / remove button will go back to previous page - done

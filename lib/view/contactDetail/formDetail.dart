@@ -90,7 +90,7 @@ class FormDetail extends GetView<ContactController> {
             size: 15,
             color: CustomizeTheme.blueColor,
           ),
-          hintText: 'Enter phone number (ex: 60xxxxxxxxx)..',
+          hintText: 'Enter phone number (ex: 60xxxxxxxxxx)..',
           textColor: View.of(context).platformDispatcher.platformBrightness ==
                   Brightness.dark
               ? CustomizeTheme.whiteColor

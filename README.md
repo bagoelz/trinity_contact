@@ -3,7 +3,9 @@
 Application for assesment on trinity
 
 ## Getting Started
-### flutter pub get
+### flutter pub get to start download defendencies
+
+
 '''
 - Login Page - done
 - add prefix (you) - done

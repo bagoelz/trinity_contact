@@ -95,7 +95,7 @@ class FormDetail extends GetView<ContactController> {
                   Brightness.dark
               ? CustomizeTheme.whiteColor
               : CustomizeTheme.blackColor,
-          validateFunction: Validator().validateText,
+          validateFunction: Validator().validateNumber,
           keyboardType: TextInputType.text,
         ),
         const SizedBox(

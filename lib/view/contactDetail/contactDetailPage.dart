@@ -98,6 +98,7 @@ class ContactDetailPage extends GetView<ContactController> {
                           FormDetail(
                             firstName: controller.firstName,
                             lastName: controller.lastName,
+                            phone: controller.phone,
                             email: controller.email,
                             dob: controller.dob,
                           ),

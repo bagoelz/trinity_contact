@@ -9,12 +9,14 @@ import 'package:trinity_contact/shared/validator.dart';
 class FormDetail extends GetView<ContactController> {
   final TextEditingController firstName;
   final TextEditingController lastName;
+  final TextEditingController phone;
   final TextEditingController email;
   final TextEditingController dob;
   final bool readOnly;
   const FormDetail({
     required this.firstName,
     required this.lastName,
+    required this.phone,
     required this.email,
     required this.dob,
     this.readOnly = false,
@@ -65,6 +67,30 @@ class FormDetail extends GetView<ContactController> {
             color: CustomizeTheme.blueColor,
           ),
           hintText: 'Enter last name..',
+          textColor: View.of(context).platformDispatcher.platformBrightness ==
+                  Brightness.dark
+              ? CustomizeTheme.whiteColor
+              : CustomizeTheme.blackColor,
+          validateFunction: Validator().validateText,
+          keyboardType: TextInputType.text,
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        const LabelDisplay(firstText: 'Phone number', secondText: '*'),
+        const SizedBox(
+          height: 10,
+        ),
+        FormInputFieldWithIcon(
+          controller: phone,
+          suffixIsAsset: false,
+          readOnly: readOnly,
+          iconPrefix: const Icon(
+            Icons.add,
+            size: 15,
+            color: CustomizeTheme.blueColor,
+          ),
+          hintText: 'Enter phone number (ex: 60xxxxxxxxx)..',
           textColor: View.of(context).platformDispatcher.platformBrightness ==
                   Brightness.dark
               ? CustomizeTheme.whiteColor

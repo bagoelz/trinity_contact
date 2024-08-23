@@ -14,6 +14,16 @@ class BioDetail extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
+        contact.phoneNumber != 0
+            ? Column(
+                children: [
+                  TextBio(title: '+${contact.phoneNumber!}'),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              )
+            : const SizedBox(),
         TextBio(title: contact.email!),
         const SizedBox(
           height: 10,

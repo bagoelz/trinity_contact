@@ -95,6 +95,7 @@ class AddContactPage extends GetView<ContactController> {
                         lastName: controller.lastName,
                         email: controller.email,
                         dob: controller.dob,
+                        phone: controller.phone,
                         readOnly: false,
                       ),
                       const SizedBox(

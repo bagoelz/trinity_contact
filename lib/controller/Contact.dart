@@ -23,6 +23,7 @@ class ContactController extends GetxController {
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
   TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
   TextEditingController dob = TextEditingController();
 
   getData() {
@@ -80,7 +81,6 @@ class ContactController extends GetxController {
               item.lastName.toLowerCase().contains(text))
           .toList();
       contactList.refresh();
-
       getAllCapital(changeOwn: false);
       update();
     } else {
@@ -96,6 +96,7 @@ class ContactController extends GetxController {
     lastName.text = contact.lastName;
     email.text = contact.email ?? "";
     dob.text = contact.dob ?? "";
+    phone.text = contact.phoneNumber.toString();
     update();
   }
 
@@ -104,6 +105,7 @@ class ContactController extends GetxController {
     lastName.text = "";
     email.text = "";
     dob.text = "";
+    phone.text = "";
   }
 
   updateDetail() {
@@ -113,9 +115,9 @@ class ContactController extends GetxController {
     contactList[index].lastName = lastName.text;
     contactList[index].email = email.text;
     contactList[index].dob = dob.text;
+    contactList[index].phoneNumber = int.parse(phone.text);
     contactList.refresh();
     clearDetailController();
-    sendSnackbar(title: "SUCCESS", message: "Update succesfully");
     selectedContact.value =
         ContactModel(id: '', firstName: 'firstName', lastName: 'lastName');
     ownContact.refresh();
@@ -127,13 +129,14 @@ class ContactController extends GetxController {
   addNewContact() {
     String id = uuid.v1();
     contactList.add(ContactModel(
-        id: id,
-        firstName: firstName.text,
-        lastName: lastName.text,
-        email: email.text,
-        dob: dob.text));
+      id: id,
+      firstName: firstName.text,
+      lastName: lastName.text,
+      email: email.text,
+      dob: dob.text,
+      phoneNumber: int.parse(phone.text),
+    ));
     contactList.refresh();
-    sendSnackbar(title: "SUCCESS", message: "Add new contact succesfully");
     getAllCapital();
     Get.back();
   }
@@ -143,7 +146,6 @@ class ContactController extends GetxController {
         contactList.indexWhere((item) => item.id == selectedContact.value!.id);
     contactList.removeAt(index);
     contactList.refresh();
-    sendSnackbar(title: "SUCCESS", message: "Contact remove succesfully");
     getAllCapital();
     update();
     Get.back();

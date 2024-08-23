@@ -14,9 +14,13 @@ class SectionInformation extends StatelessWidget {
         Text(
           title,
           style: context.bodySmall?.copyWith(
-              color: CustomizeTheme.blueColor, fontStyle: FontStyle.italic),
+              color: CustomizeTheme.blueColor,
+              fontStyle: FontStyle.italic,
+              fontSize: 15),
         ),
-        const Divider()
+        const Divider(
+          thickness: 0.3,
+        ),
       ],
     );
   }

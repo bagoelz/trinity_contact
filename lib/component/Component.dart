@@ -6,3 +6,4 @@ export 'Avatar.dart';
 export 'SearchInput.dart';
 export 'Label.dart';
 export 'SectionInformation.dart';
+export 'TextBio.dart';

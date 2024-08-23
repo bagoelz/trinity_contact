@@ -1,5 +1,6 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:trinity_contact/controller/Controller.dart';
 import 'package:trinity_contact/shared/constant.dart';
@@ -20,6 +21,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
     return GetBuilder<AuthenticationController>(
         builder: (auth) => DynamicColorBuilder(
                 builder: (ColorScheme? light, ColorScheme? dark) {

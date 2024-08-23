@@ -9,8 +9,20 @@ class AppRoutes {
       page: () => const SignInPage(),
     ),
     GetPage(
+      name: '/home',
+      page: () => const HomePage(),
+    ),
+    GetPage(
       name: '/contact',
       page: () => const ContactPage(),
+    ),
+    GetPage(
+      name: '/contactdetail',
+      page: () => const ContactDetailPage(),
+    ),
+    GetPage(
+      name: '/addcontact',
+      page: () => const AddContactPage(),
     ),
   ];
 }

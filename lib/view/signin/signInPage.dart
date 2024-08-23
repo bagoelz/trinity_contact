@@ -14,6 +14,7 @@ class SignInPage extends GetView<AuthenticationController> {
   Widget build(BuildContext context) {
     final validate = Validator();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Obx(
         () => SafeArea(
           child: Padding(
@@ -51,7 +52,12 @@ class SignInPage extends GetView<AuthenticationController> {
                       color: CustomizeTheme.blueColor,
                     ),
                     hintText: 'Please fill your user id',
-                    textColor: CustomizeTheme.blackColor,
+                    textColor: View.of(context)
+                                .platformDispatcher
+                                .platformBrightness ==
+                            Brightness.dark
+                        ? CustomizeTheme.whiteColor
+                        : CustomizeTheme.blackColor,
                     validateFunction: validate.validateText,
                     keyboardType: TextInputType.text,
                     onChanged: (val) => controller.allowed,

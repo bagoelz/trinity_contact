@@ -18,7 +18,7 @@ class AuthenticationController extends GetxController {
     }
     if (credentials.text == 'bagoelz') {
       store.save('AUTHORIZATION', 'true');
-      return Get.offAllNamed('/contact');
+      return Get.offAllNamed('/home');
     } else {
       tryLogin.value++;
       tryLogin.refresh();
@@ -31,7 +31,7 @@ class AuthenticationController extends GetxController {
   checkLogin() async {
     dynamic login = await store.read('AUTHORIZATION');
     if (login == 'true') {
-      return Get.offAllNamed('/contact');
+      return Get.offAllNamed('/home');
     }
   }
 
@@ -41,7 +41,6 @@ class AuthenticationController extends GetxController {
   }
 
   allowed(val) {
-    print(val.toString());
     allowedLogin.value = true;
     allowedLogin.refresh();
   }

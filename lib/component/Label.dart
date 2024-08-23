@@ -14,8 +14,12 @@ class LabelDisplay extends StatelessWidget {
       children: [
         Text(
           firstText,
-          style:
-              context.titleMedium?.copyWith(color: CustomizeTheme.blackColor),
+          style: context.titleMedium?.copyWith(
+              color: View.of(context).platformDispatcher.platformBrightness ==
+                      Brightness.dark
+                  ? CustomizeTheme.whiteColor
+                  : CustomizeTheme.blackColor,
+              fontSize: 14),
         ),
         Text(
           secondText,

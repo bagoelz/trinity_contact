@@ -17,4 +17,11 @@ class CustomizeTheme {
   static const blackColor = Color(0xFF000000);
   static const dividerColor = Color(0xFFCCCCCC);
   static const contactTitel = Color(0xFF060326);
+  static const removeTitle = Color(0xFFB60000);
+  static Image iconHome = Image.asset('assets/icon/home_plain.png');
+  static Image iconHomeSelect = Image.asset(
+    'assets/icon/home.png',
+    width: 25,
+    height: 25,
+  );
 }

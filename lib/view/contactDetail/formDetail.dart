@@ -1,109 +1,143 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:trinity_contact/component/Component.dart';
 import 'package:trinity_contact/controller/Contact.dart';
 import 'package:trinity_contact/shared/constant.dart';
 import 'package:trinity_contact/shared/validator.dart';
 
 class FormDetail extends GetView<ContactController> {
-  final String avatarText;
-  const FormDetail({super.key, required this.avatarText});
+  final TextEditingController firstName;
+  final TextEditingController lastName;
+  final TextEditingController email;
+  final TextEditingController dob;
+  final bool readOnly;
+  const FormDetail({
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.dob,
+    this.readOnly = false,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final validate = Validator();
-    return SizedBox(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 30,
+    return Column(
+      children: [
+        const SizedBox(
+          height: 10,
+        ),
+        const LabelDisplay(firstText: 'First Name', secondText: '*'),
+        const SizedBox(
+          height: 10,
+        ),
+        FormInputFieldWithIcon(
+          controller: firstName,
+          suffixIsAsset: false,
+          readOnly: readOnly,
+          iconPrefix: const Icon(
+            Icons.person_outlined,
+            color: CustomizeTheme.blueColor,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AvatarCircle(avatarText: avatarText),
-            ],
+          hintText: 'Enter first name..',
+          textColor: View.of(context).platformDispatcher.platformBrightness ==
+                  Brightness.dark
+              ? CustomizeTheme.whiteColor
+              : CustomizeTheme.blackColor,
+          validateFunction: Validator().validateText,
+          keyboardType: TextInputType.text,
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        const LabelDisplay(firstText: 'Last Name', secondText: '*'),
+        const SizedBox(
+          height: 10,
+        ),
+        FormInputFieldWithIcon(
+          controller: lastName,
+          suffixIsAsset: false,
+          readOnly: readOnly,
+          iconPrefix: const Icon(
+            Icons.person_outlined,
+            color: CustomizeTheme.blueColor,
           ),
-          const SizedBox(
-            height: 30,
+          hintText: 'Enter last name..',
+          textColor: View.of(context).platformDispatcher.platformBrightness ==
+                  Brightness.dark
+              ? CustomizeTheme.whiteColor
+              : CustomizeTheme.blackColor,
+          validateFunction: Validator().validateText,
+          keyboardType: TextInputType.text,
+        ),
+        const SizedBox(
+          height: 40,
+        ),
+        const SectionInformation(
+          title: 'Sub information',
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        const LabelDisplay(firstText: 'Email', secondText: ''),
+        const SizedBox(
+          height: 10,
+        ),
+        FormInputFieldWithIcon(
+          controller: email,
+          suffixIsAsset: false,
+          readOnly: readOnly,
+          iconPrefix: const Icon(
+            Icons.email_outlined,
+            color: CustomizeTheme.blueColor,
           ),
-          const SectionInformation(
-            title: 'Main information',
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const LabelDisplay(firstText: 'First Name', secondText: '*'),
-          const SizedBox(
-            height: 10,
-          ),
-          FormInputFieldWithIcon(
-            controller: controller.firstName,
-            suffixIsAsset: true,
+          hintText: 'Enter email..',
+          textColor: View.of(context).platformDispatcher.platformBrightness ==
+                  Brightness.dark
+              ? CustomizeTheme.whiteColor
+              : CustomizeTheme.blackColor,
+          validateFunction: validate.validateEmail,
+          keyboardType: TextInputType.text,
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        const LabelDisplay(firstText: 'Date of Birth', secondText: ''),
+        const SizedBox(
+          height: 10,
+        ),
+        GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () async {
+            DateTime? _picked = await showDatePicker(
+                context: context,
+                firstDate: DateTime(1900),
+                lastDate: DateTime(DateTime.now().year + 1));
+            if (_picked != null) {
+              dob.text = DateFormat("dd/MM/yyyy").format(_picked);
+            }
+          },
+          child: FormInputFieldWithIcon(
+            controller: dob,
+            suffixIsAsset: false,
+            readOnly: true,
+            enabled: false,
             iconPrefix: const Icon(
-              Icons.person_outlined,
+              Icons.email_outlined,
               color: CustomizeTheme.blueColor,
             ),
-            hintText: 'Enter first name',
-            textColor: CustomizeTheme.blackColor,
+            hintText: 'Enter birthday..',
+            textColor: View.of(context).platformDispatcher.platformBrightness ==
+                    Brightness.dark
+                ? CustomizeTheme.whiteColor
+                : CustomizeTheme.blackColor,
+            validateFunction: validate.validateBirthDay,
             keyboardType: TextInputType.text,
           ),
-          // const LabelDisplay(firstText: 'Last Name', secondText: '*'),
-          // const SizedBox(
-          //   height: 10,
-          // ),
-          // Container(
-          //   color: Colors.black,
-          //   height: 40,
-          //   width: Get.width,
-          //   child: FormInputFieldWithIcon(
-          //     controller: controller.lastName,
-          //     suffixIsAsset: true,
-          //     iconPrefix: const Icon(
-          //       Icons.person_outlined,
-          //       color: CustomizeTheme.blueColor,
-          //     ),
-          //     hintText: 'Enter last name',
-          //     textColor: CustomizeTheme.blackColor,
-          //     validateFunction: Validator().validateText,
-          //     keyboardType: TextInputType.text,
-          //   ),
-          // ),
-          // const SectionInformation(
-          //   title: 'Sub information',
-          // ),
-          // const LabelDisplay(firstText: 'Email', secondText: '*'),
-          // FormInputFieldWithIcon(
-          //   controller: firstName,
-          //   suffixIsAsset: true,
-          //   iconPrefix: const Icon(
-          //     Icons.person_outlined,
-          //     color: CustomizeTheme.blueColor,
-          //   ),
-          //   hintText: 'Email',
-          //   textColor: CustomizeTheme.blackColor,
-          //   validateFunction: validate.validateEmail,
-          //   keyboardType: TextInputType.text,
-          // ),
-          // const LabelDisplay(firstText: 'Email', secondText: '*'),
-          // TextFieldTanggal(
-          //   label: 'Enter birth date',
-          //   controller: dob,
-          // )
-          // FormInputFieldWithIcon(
-          //   controller: firstName,
-          //   suffixIsAsset: true,
-          //   iconPrefix: const Icon(
-          //     Icons.person_outlined,
-          //     color: CustomizeTheme.blueColor,
-          //   ),
-          //   hintText: 'Date of birth',
-          //   textColor: CustomizeTheme.blackColor,
-          //   validateFunction: validate.validateTextEmpty,
-          //   keyboardType: TextInputType.text,
-          // ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

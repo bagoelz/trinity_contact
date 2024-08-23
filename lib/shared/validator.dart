@@ -1,8 +1,9 @@
 class Validator {
   String? validateNumber(String? value) {
-    if (value!.isEmpty) return 'required ';
-    final RegExp nameExp = new RegExp(r'^[0-9-]+$');
-    if (!nameExp.hasMatch(value)) return 'Only numbers allowed';
+    if (value!.isNotEmpty) {
+      final RegExp nameExp = new RegExp(r'^[0-9-]+$');
+      if (!nameExp.hasMatch(value)) return 'Only numbers allowed';
+    }
     return null;
   }
 

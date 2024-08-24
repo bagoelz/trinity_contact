@@ -77,7 +77,7 @@ class FormDetail extends GetView<ContactController> {
         const SizedBox(
           height: 30,
         ),
-        const LabelDisplay(firstText: 'Phone number', secondText: '*'),
+        const LabelDisplay(firstText: 'Phone number', secondText: ''),
         const SizedBox(
           height: 10,
         ),

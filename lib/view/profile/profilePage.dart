@@ -8,7 +8,7 @@ import 'package:trinity_contact/shared/extension.dart';
 import 'package:trinity_contact/view/profile/BioDetail.dart';
 
 class ProfilePage extends GetView<ContactController> {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {

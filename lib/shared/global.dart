@@ -6,8 +6,8 @@ import '../controller/Controller.dart';
 
 class Global {
   static Future<void> init() async {
-    Get.put<AuthenticationController>(AuthenticationController());
+    Get.put<ContactController>(ContactController());
     Get.put<HomeController>(HomeController());
-    Get.lazyPut(() => ContactController());
+    Get.put<AuthenticationController>(AuthenticationController());
   }
 }

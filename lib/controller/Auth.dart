@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:trinity_contact/component/snackbar.dart';
+import 'package:trinity_contact/controller/Home.dart';
 import 'package:trinity_contact/helper/SharedPref.dart';
 import 'package:trinity_contact/shared/global.dart';
 
@@ -38,7 +39,10 @@ class AuthenticationController extends GetxController {
 
   handledSignout() {
     store.remove('AUTHORIZATION');
-    Get.offAllNamed('/signin');
+    credentials.text = "";
+    HomeController.to.selectedMenu.value = 0;
+    update();
+    return Get.offAllNamed('/signin');
   }
 
   allowed(val) {
